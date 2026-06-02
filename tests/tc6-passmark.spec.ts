@@ -8,7 +8,7 @@ configure({
 });
 
 test("TC1 - Register User using Passmark", async ({ page }) => {
-  test.setTimeout(180_000); // increased to 3 minutes
+  test.setTimeout(180_000);
 
   await runSteps({
     page,
@@ -16,24 +16,39 @@ test("TC1 - Register User using Passmark", async ({ page }) => {
     steps: [
       { description: "Navigate to https://automationexercise.com/" },
       { description: "Click on Signup / Login link" },
-      { description: "Fill in the Name field with 'testuser'" },
       {
-        description:
-          "Fill in the Email Address field in the Signup form with '{{run.email}}'",
+        description: "Fill in the Name field in Signup form",
+        data: { value: "testuser" },
+      },
+      {
+        description: "Fill in the Email Address field in Signup form",
+        data: { value: "{{run.email}}" },
       },
       { description: "Click the Signup button" },
       { description: "Select Mrs. title" },
-      { description: "Fill in the Password field with 'Test@1234'" },
-      { description: "Select day 1 from the Day dropdown" },
-      { description: "Select February from the Month dropdown" },
-      { description: "Select 2000 from the Year dropdown" },
-      { description: "Fill First name field with 'Test'" },
-      { description: "Fill Last name field with 'User'" },
-      { description: "Fill Address field with '123 Test Street'" },
-      { description: "Fill State field with 'Maharashtra'" },
-      { description: "Fill City field with 'Pune'" },
-      { description: "Fill Zipcode field with '411001'" },
-      { description: "Fill Mobile Number field with '9999999999'" },
+      {
+        description: "Fill in the Password field",
+        data: { value: "Test@1234" },
+      },
+      { description: "Select day from the Day dropdown", data: { value: "1" } },
+      {
+        description: "Select month from the Month dropdown",
+        data: { value: "February" },
+      },
+      {
+        description: "Select year from the Year dropdown",
+        data: { value: "2000" },
+      },
+      { description: "Fill First name field", data: { value: "Test" } },
+      { description: "Fill Last name field", data: { value: "User" } },
+      { description: "Fill Address field", data: { value: "123 Test Street" } },
+      { description: "Fill State field", data: { value: "Maharashtra" } },
+      { description: "Fill City field", data: { value: "Pune" } },
+      { description: "Fill Zipcode field", data: { value: "411001" } },
+      {
+        description: "Fill Mobile Number field",
+        data: { value: "9999999999" },
+      },
       { description: "Click Create Account button" },
     ],
     assertions: [
